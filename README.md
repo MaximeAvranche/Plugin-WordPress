@@ -17,7 +17,7 @@ simplement leur page de mentions légales.
 Contient toutes les fonctions nécessaires pour le bon fonctionnement du plugin.
 A ne pas supprimer.
 
-#DOSSIER DATA
+### DOSSIER DATA
 
 Contient toutes les fonctions nécessaires pour l'installation du plugin.
 ATTENTION : Ne pas supprimer ce dossier. Lors de l'installation, le dossier se supprimera de lui-même.
