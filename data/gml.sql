@@ -1,19 +1,3 @@
- /**
-  *
-  * Par Pois Chiche Design
-  * Auteur : Maxime Avranche
-  * Créé le 13/02/2023
-  * 
- **/
-
---
--- Configuration de la Base de données
---
--- --------------------------------------------------------
---
--- Structure de la table `wp_gml`
---
-
 DROP TABLE IF EXISTS `wp_gml`;
 CREATE TABLE IF NOT EXISTS `wp_gml` (
   `ID` int NOT NULL AUTO_INCREMENT,
@@ -23,7 +7,10 @@ CREATE TABLE IF NOT EXISTS `wp_gml` (
   `contact` text CHARACTER SET utf8 COLLATE utf8_general_ci,
   `rgpd` text CHARACTER SET utf8 COLLATE utf8_general_ci,
   `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `first` int NOT NULL DEFAULT '0',
+  `adress` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `city` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `zip_code` int DEFAULT NULL,
+  `first` int DEFAULT '0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -32,8 +19,5 @@ CREATE TABLE IF NOT EXISTS `wp_gml` (
 -- Déchargement des données de la table `wp_gml`
 --
 
-INSERT INTO `wp_gml` (`ID`, `buisness_name`, `owner`, `dpo`, `contact`, `rgpd`, `content`, `first`) VALUES
-(1, null, null, null, null, null, null, 0);
-COMMIT;
-
--- --------------------------------------------------------
+INSERT INTO `wp_gml` (`ID`, `buisness_name`, `owner`, `dpo`, `contact`, `rgpd`, `content`, `adress`, `city`, `zip_code`, `first`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 1);
