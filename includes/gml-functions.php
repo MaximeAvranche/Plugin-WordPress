@@ -3,16 +3,26 @@
 
 /** FONCTIONS MENU **/
 
-/*// Ajout d'un bloc dans le dashboard
+// Ajout d'un bloc dans le dashboard
 add_action('wp_dashboard_setup', 'gml_add_dashboard_widgets');
 function gml_add_dashboard_widgets() {
-	add_meta_box('gml_dashboard_widget', 'gml Dashboard Widget', 'gml_dashboard_widget_function', 'dashboard', 'normal', 'high');
+	add_meta_box('gml_dashboard_widget', 'GML - Information', 'gml_dashboard_widget_function', 'dashboard', 'normal', 'high');
 }
 
 // Contenu du bloc dans le dashboard
 function gml_dashboard_widget_function() {
-	echo "Merci d'avoir installé le plugin Gestion de Mentions Légales. <br />Vous n'avez aucune notification.";
-}*/
+	echo "Merci d'avoir installé le plugin Gestion de Mentions Légales.";
+	if(gml_Select_Info("buisness-name") == null && gml_Select_Info("owner") == null && gml_Select_Info("contact") == null) {
+		echo "<strong><p style='color: red;'>ATTENTION : Le plugin n'a pas encore été configuré. Veuillez vous rendre dans les paramètres du plugin pour ajouter des valeurs.</p></strong>";
+	} else {
+		echo "<strike><p style='color: #C1C1C1;'>Configurer les paramètres généraux du plugin.</p></strike>";
+	}
+	if(gml_Select_Info("adress") == null && gml_Select_Info("city") == null && gml_Select_Info("zip_code") == null) {
+		echo "<strong><p style='color: red;'>N'oubliez pas de configurer l'adresse de l'organisation.</p></strong>";
+	} else {
+		echo "<strike><p style='color: #C1C1C1;'>Ajouter l'adresse de l'organisation.</p></strike>";
+	}
+}
 
 // Filtre pour executer la fonction
 add_action('admin_menu', 'gml_Add_My_Admin_Link');
@@ -29,6 +39,7 @@ function gml_Add_My_Admin_Link() {
 
 add_shortcode( 'sitename', function() { return gml_Select_Info("buisness-name"); } ); // Nom du site [sitename]
 add_shortcode( 'proprietaire', function() { return gml_Select_Info("owner"); } ); // Nom du propriétaire [proprietaire]
+add_shortcode( 'dpo', function() { return gml_Select_Info("dpo"); } ); // Nom du Directeur de la Protection des Données [dpo]
 add_shortcode( 'adresse', function() { return gml_Select_Info("adress") . ", " . gml_Select_Info("zip_code") . " " .gml_Select_Info("city") . ", France"; } ); // Adresse complète de l'entreprise [adresse]
 add_shortcode( 'courriel', function() { return gml_Select_Info("contact"); } ); // Conctact [courriel]
 add_shortcode( 'courriel-rgpd', function() { gml_Select_Info("rgpd"); } ); // Contact RGPD du site [courriel-rgpd]
