@@ -27,12 +27,12 @@ function gml_Add_My_Admin_Link() {
 
 /** SHORTCODES **/
 
-add_shortcode( '_sitename', function() { return gml_Select_Info("buisness-name"); } ); // Nom du site [sitename]
+add_shortcode( 'sitename', function() { return gml_Select_Info("buisness-name"); } ); // Nom du site [sitename]
 add_shortcode( 'proprietaire', function() { return gml_Select_Info("owner"); } ); // Nom du propriétaire [proprietaire]
 add_shortcode( 'adresse', function() { return gml_Select_Info("adress") . ", " . gml_Select_Info("zip_code") . " " .gml_Select_Info("city") . ", France"; } ); // Adresse complète de l'entreprise [adresse]
-add_shortcode( 'courriel', function() { return gml_Select_Info("contact"); } );
+add_shortcode( 'courriel', function() { return gml_Select_Info("contact"); } ); // Conctact [courriel]
 add_shortcode( 'courriel-rgpd', function() { gml_Select_Info("rgpd"); } ); // Contact RGPD du site [courriel-rgpd]
-add_shortcode( 'mes-droits', function() { echo "<em>Pour connaître et exercer vos droits, veuillez consulter notre <a href='METTRE LE LIEN ICI'>politique de confidentialité</a>.</em>"; } ); // Champs exercer vos droits [mes-droits]
+add_shortcode( 'mes-droits', function() { echo "<em>Pour connaître et exercer vos droits, veuillez consulter notre <a href=". get_bloginfo('url') ."/mentions-legales>politique de confidentialité</a>.</em>"; } ); // Champs exercer vos droits [mes-droits]
 
 
 /** FONCTIONS **/
